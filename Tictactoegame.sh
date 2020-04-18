@@ -8,7 +8,6 @@ do
 done
 
 check=$((1+RANDOM%2))
-
 case $check in
     1 )
        value=x
@@ -17,4 +16,16 @@ case $check in
        value=0
       ;;
 esac
- echo user assigned value is $value
+
+toss=$((RANDOM%2))
+case $toss in
+   0 )
+      play=computer
+     ;;
+   1 )
+      play=player
+     ;;
+esac
+echo $play plays first
+
+
