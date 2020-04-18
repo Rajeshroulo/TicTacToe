@@ -7,4 +7,14 @@ do
   arr[i]=n
 done
 
-echo ${arr[@]}
+check=$((1+RANDOM%2))
+
+case $check in
+    1 )
+       value=x
+      ;;
+    2 )
+       value=0
+      ;;
+esac
+ echo user assigned value is $value
