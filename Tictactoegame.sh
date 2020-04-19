@@ -21,6 +21,17 @@ case $check in
       ;;
 esac
 echo player value is $value
+
+if [ $value=x ]
+then
+    cmp=0
+elif [ $value=0 ]
+then
+    cmp=x
+else
+  echo invalid
+fi
+echo computer value is $cmp
 }
 
 toss=$((RANDOM%2))
@@ -49,5 +60,4 @@ then
 else
     echo the game is tie
 fi
-
 
