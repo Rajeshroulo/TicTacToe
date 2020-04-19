@@ -1,5 +1,7 @@
 #!/bin/bash 
 
+play=0
+
 declare -a arr
 
 function tochecktheboard( ) {
@@ -14,18 +16,21 @@ function playervalue( ) {
 check=$((1+RANDOM%2))
 case $check in
     1 )
-       value=x
+       val=x
+       play=player
       ;;
     2 )
-       value=0
+       val=0
+       play=computer
       ;;
 esac
-echo player value is $value
+echo player value is $val
+echo $play plays first
 
-if [ $value=x ]
+if [ $val=x ]
 then
     cmp=0
-elif [ $value=0 ]
+elif [ $val=0 ]
 then
     cmp=x
 else
@@ -34,30 +39,30 @@ fi
 echo computer value is $cmp
 }
 
-toss=$((RANDOM%2))
-case $toss in
-   0 )
-      play=computer
-     ;;
-   1 )
-      play=player
-     ;;
-esac
-echo $play plays first
-
-tochecktheboard
-
 playervalue
 
 player=x
 computer=0
-if [ $player=$value ]
+if [ $player=$val ]
 then
     echo player wins the game
-elif [ $computer=$value ]
+elif [ $computer=$val ]
 then
     echo computer wins the game
 else
     echo the game is tie
 fi
+
+for(( i=0; i<9; i++ ))
+do 
+   if (( arr[0]=$val && arr[1]=$val && arr[2]=$val ))
+    then
+        echo player wins
+   elif(( arr[0]=$cmp && arr[1]=$cmp && arr[2]=$cmp ))
+     then
+        echo computer wins
+   else
+      echo game is tied
+   fi
+done
 
