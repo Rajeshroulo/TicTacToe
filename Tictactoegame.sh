@@ -2,10 +2,13 @@
 
 declare -a arr
 
+function tochecktheboard( ) {
 for(( i=0; i<9; i++ ))
 do
   arr[i]=n
 done
+echo the board is in the form ${arr[@]}
+}
 
 check=$((1+RANDOM%2))
 case $check in
@@ -28,4 +31,4 @@ case $toss in
 esac
 echo $play plays first
 
-
+tochecktheboard
