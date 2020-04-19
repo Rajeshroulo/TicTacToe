@@ -10,6 +10,7 @@ done
 echo the board is in the form ${arr[@]}
 }
 
+function playervalue( ) {
 check=$((1+RANDOM%2))
 case $check in
     1 )
@@ -19,6 +20,8 @@ case $check in
        value=0
       ;;
 esac
+echo player value is $value
+}
 
 toss=$((RANDOM%2))
 case $toss in
@@ -32,3 +35,19 @@ esac
 echo $play plays first
 
 tochecktheboard
+
+playervalue
+
+player=x
+computer=0
+if [ $player=$value ]
+then
+    echo player wins the game
+elif [ $computer=$value ]
+then
+    echo computer wins the game
+else
+    echo the game is tie
+fi
+
+
