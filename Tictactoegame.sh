@@ -54,8 +54,8 @@ else
 fi
 
 for(( i=0; i<9; i++ ))
-do 
-   if (( arr[0]=$val && arr[1]=$val && arr[2]=$val ))
+do
+   if(( arr[0]=$val && arr[1]=$val && arr[2]=$val ))
     then
         echo player wins
    elif(( arr[0]=$cmp && arr[1]=$cmp && arr[2]=$cmp ))
