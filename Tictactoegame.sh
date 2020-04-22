@@ -53,7 +53,7 @@ checkRows(){
 		r=$((3*$i))
 		if [[ ${brd[$((1+$r))]} != "-" &&  ${brd[$((1+$r))]} = ${brd[$((2+$r))]} && ${brd[$((2+$r))]} =  ${brd[$((3+$r))]} ]]
 		then
-			 echo winner ${brd[$((1+$r))]}
+			 winner ${brd[$((1+$r))]}
 		fi
 	done
 }
@@ -63,7 +63,7 @@ checkColms(){
 	do
 		if [[ ${brd[$((1+$i))]} != "-" && ${brd[$((1+$i))]} = ${brd[$((4+$i))]} && ${brd[$((4+$i))]} =  ${brd[$((7+$i))]} ]]
 		then
-			 echo winner ${brd[$((1+$i))]}
+			 winner ${brd[$((1+$i))]}
 		fi
 	done
 }
@@ -72,25 +72,25 @@ checkDiagonals(){
 	if [[ ${brd[1]} != "-" && ${brd[1]} = ${brd[5]} && ${brd[5]} =  ${brd[9]} ]]
 	then
 		winner ${brd[1]}
-	elif [[ ${brd[3]} != - && ${brd[3]} = ${brd[5]} && ${brd[5]} =  ${brd[7]} ]]
+	elif [[ ${brd[3]} != "-" && ${brd[3]} = ${brd[5]} && ${brd[5]} =  ${brd[7]} ]]
 	then
 		winner ${brd[3]}
 	fi
 
 }
 
-checkwinner(){
+winner(){
 
-	if [ $1 = $val ]
+	if [ $1 -eq $val ]
 	then
-		win="player"
-	else
-		win="computer"
+		 win="player"
+        else
+		 win="computer"
 	fi
 
 	printBoard
         echo gameover
-	echo Winner is $win
+	echo $win is the Winner 
 	exit
 }
 checkTie(){
@@ -110,7 +110,6 @@ checkColms
 checkDiagonals
 
 checkTie
-checkwinner
 
 }
 
@@ -222,7 +221,7 @@ centre(){
 }
 
 sides(){
-	for((i=1;i<4;i++))
+	for((i=1;i<=4;i++))
 	do
 		t=$((2*$i))
 		if [ ${brd[$t]} = "-" ]
@@ -268,8 +267,11 @@ checkValidPosition(){
 
 
 initialize(){
+
 tochecktheboard
+
 playervalue
+
 }
 
 game(){
@@ -279,14 +281,20 @@ game(){
 		if [ $play = computer ]
 		then
 			echo It is computer turn
-			computerTurn
+
+                        computerTurn
+
 			brd[$position]=$cmp
+
 			((turns++))
+
 			play="player"
 		else
 			echo It is you turn
-			echo "enter your position"
+
+			echo "enter your position(1-9)"
 			read position
+
 			checkValidPosition $position
 			if [ $valid = true ]
 			then
